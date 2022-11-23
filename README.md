@@ -1,4 +1,4 @@
-# Paint by Example: Exemplar-based Image Editing with Diffusion Models (Unofficial Pytorch Implementation)
+# Paint by Example: Exemplar-based Image Editing with Diffusion Models
 ![Teaser](figure/teaser.png)
 ### [Project page (Coming Soon)]() |   [Paper]() 
 
