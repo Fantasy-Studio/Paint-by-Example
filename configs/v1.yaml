@@ -87,7 +87,7 @@ data:
           target: ldm.data.open-images.OpenImageDataset
           params:
               state: validation
-              dataset_dir: /path/to/dataset
+              dataset_dir: /path/to/dataset 
               arbitrary_mask_percent: 0.5
               image_size: 512
       test:
