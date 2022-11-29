@@ -1,0 +1,7 @@
+__pycache__
+tmp
+src
+checkpoints
+data
+train.sh
+test.sh
