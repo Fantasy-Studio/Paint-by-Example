@@ -1,4 +1,4 @@
-name: ldm
+name: ldm-test
 channels:
   - pytorch
   - defaults
