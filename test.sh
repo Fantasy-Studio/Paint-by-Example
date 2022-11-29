@@ -1,5 +1,5 @@
 python scripts/inference.py \
---plms --outdir tmp/test_data/result \
+--plms --outdir results \
 --config configs/v1.yaml \
 --ckpt checkpoints/model.ckpt \
 --image_path examples/image/example_1.png \
