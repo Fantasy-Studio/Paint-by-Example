@@ -1,4 +1,4 @@
-name: ldm
+name: Paint-by-Example
 channels:
   - pytorch
   - defaults

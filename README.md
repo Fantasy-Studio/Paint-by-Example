@@ -13,12 +13,12 @@
 - *2022-11-29* Upload code.
 
 ## Requirements
-A suitable [conda](https://conda.io/) environment named `ldm` can be created
+A suitable [conda](https://conda.io/) environment named `Paint-by-Example` can be created
 and activated with:
 
 ```
 conda env create -f environment.yaml
-conda activate ldm
+conda activate Paint-by-Example
 ```
 
 ## Pretrained Model
