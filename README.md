@@ -22,7 +22,7 @@ conda activate ldm
 ```
 
 ## Pretrained Model
-We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX11bIVzsPuv7-cIsANN2BkzuX5pLm/view?usp=share_link)) that trained on Open-Images for 40 epochs. By default, we assume that the pretrained model is downloaded and saved to the directory `checkpoints`.
+We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX11bIVzsPuv7-cIsANN2BkzuX5pLm/view?usp=share_link)) that is trained on Open-Images for 40 epochs. By default, we assume that the pretrained model is downloaded and saved to the directory `checkpoints`.
 
 ## Testing
 ```
