@@ -34,3 +34,6 @@ Coming Soon.
 ## Acknowledgements
 
 - This code borrows heavily from [Stable Diffusion](https://github.com/CompVis/stable-diffusion). We also thank the contributors of [OpenAI's ADM codebase](https://github.com/openai/guided-diffusion) and [https://github.com/lucidrains/denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch).
+
+## License
+The codes and the pretrained model in this repository are under the CreativeML OpenRAIL M license as specified by the LICENSE file.
