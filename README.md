@@ -7,7 +7,30 @@
 
 ## Abstract
 >Language-guided image editing has achieved great success recently. In this paper, for the first time, we investigate exemplar-guided image editing for more precise control. We achieve this goal by leveraging self-supervised training to disentangle and re-organize the source image and the exemplar. However, the naive approach will cause obvious fusing artifacts. We carefully analyze it and propose an information bottleneck and strong augmentations to avoid the trivial solution of directly copying and pasting the exemplar image. Meanwhile, to ensure the controllability of the editing process, we design an arbitrary shape mask for the exemplar image and leverage the classifier-free guidance to increase the similarity to the exemplar image. The whole framework involves a single forward of the diffusion model without any iterative optimization. We demonstrate that our method achieves an impressive performance and enables controllable editing on in-the-wild images with high fidelity.
+>
+## News
 
+- *2022-11-29* Upload code.
 
+## Requirements
+A suitable [conda](https://conda.io/) environment named `ldm` can be created
+and activated with:
 
-## Code and demo are coming soon.
+```
+conda env create -f environment.yaml
+conda activate ldm
+```
+
+## Pretrained Model
+We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX11bIVzsPuv7-cIsANN2BkzuX5pLm/view?usp=share_link)) that trained on Open-Images for 40 epochs. By default, we assume that the pretrained model is downloaded and saved to the directory `checkpoints`.
+
+## Testing
+```
+sh test.sh
+```
+## Training
+Coming Soon.
+
+## Acknowledgements
+
+- This code borrows heavily from [Stable Diffusion](https://github.com/CompVis/stable-diffusion). We also thank the contributors of [OpenAI's ADM codebase](https://github.com/openai/guided-diffusion) and [https://github.com/lucidrains/denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch).
