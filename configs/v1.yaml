@@ -80,21 +80,21 @@ data:
           target: ldm.data.open-images.OpenImageDataset
           params:
               state: train
-              dataset_dir: /home/yxjs/tennyson/stable-diffusion/dataset/openimages
+              dataset_dir: /path/to/dataset
               arbitrary_mask_percent: 0.5
               image_size: 512
       validation:
           target: ldm.data.open-images.OpenImageDataset
           params:
               state: validation
-              dataset_dir: /home/yxjs/tennyson/stable-diffusion/dataset/openimages
+              dataset_dir: /path/to/dataset
               arbitrary_mask_percent: 0.5
               image_size: 512
       test:
           target: ldm.data.open-images.OpenImageDataset
           params:
               state: test
-              dataset_dir: /home/yxjs/tennyson/stable-diffusion/dataset/openimages
+              dataset_dir: /path/to/dataset
               arbitrary_mask_percent: 0.5
               image_size: 512
 
