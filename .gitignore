@@ -4,4 +4,4 @@ src
 checkpoints
 data
 train.sh
-test.sh
+latent_diffusion.egg-info
