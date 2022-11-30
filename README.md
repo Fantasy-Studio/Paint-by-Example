@@ -25,9 +25,37 @@ conda activate Paint-by-Example
 We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX11bIVzsPuv7-cIsANN2BkzuX5pLm/view?usp=share_link)) that is trained on Open-Images for 40 epochs. By default, we assume that the pretrained model is downloaded and saved to the directory `checkpoints`.
 
 ## Testing
+
+To sample from our model, run the following, you can use `scripts/inference.py`. For example, 
+```
+python scripts/inference.py \
+--plms --outdir results \
+--config configs/v1.yaml \
+--ckpt checkpoints/model.ckpt \
+--image_path examples/image/example_1.png \
+--mask_path examples/mask/example_1.png \
+--reference_path examples/reference/example_1.jpg \
+--seed 321 \
+--scale 5
+```
+or simply run:
 ```
 sh test.sh
 ```
+Additional notes to consider: 
+- During inference, the options used during training are loaded from the saved checkpoint and are then updated using the 
+test options passed to the inference script. For example, there is no need to pass `--dataset_type` or `--label_nc` to the 
+ inference script, as they are taken from the loaded `opts`.
+- When running inference for segmentation-to-image or sketch-to-image, it is highly recommend to do so with a style-mixing,
+as is done in the paper. This can simply be done by adding `--latent_mask=8,9,10,11,12,13,14,15,16,17` when calling the 
+script.
+- When running inference for super-resolution, please provide a single down-sampling value using `--resize_factors`.
+- Adding the flag `--couple_outputs` will save an additional image containing the input and output images side-by-side in the sub-directory
+`inference_coupled`. Otherwise, only the output image is saved to the sub-directory `inference_results`.
+- By default, the images will be saved at resolutiosn of 1024x1024, the original output size of StyleGAN. If you wish to save 
+outputs resized to resolutions of 256x256, you can do so by adding the flag `--resize_outputs`.
+
+
 ## Training
 Coming Soon.
 
