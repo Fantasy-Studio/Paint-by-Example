@@ -42,18 +42,6 @@ or simply run:
 ```
 sh test.sh
 ```
-Additional notes to consider: 
-- During inference, the options used during training are loaded from the saved checkpoint and are then updated using the 
-test options passed to the inference script. For example, there is no need to pass `--dataset_type` or `--label_nc` to the 
- inference script, as they are taken from the loaded `opts`.
-- When running inference for segmentation-to-image or sketch-to-image, it is highly recommend to do so with a style-mixing,
-as is done in the paper. This can simply be done by adding `--latent_mask=8,9,10,11,12,13,14,15,16,17` when calling the 
-script.
-- When running inference for super-resolution, please provide a single down-sampling value using `--resize_factors`.
-- Adding the flag `--couple_outputs` will save an additional image containing the input and output images side-by-side in the sub-directory
-`inference_coupled`. Otherwise, only the output image is saved to the sub-directory `inference_results`.
-- By default, the images will be saved at resolutiosn of 1024x1024, the original output size of StyleGAN. If you wish to save 
-outputs resized to resolutions of 256x256, you can do so by adding the flag `--resize_outputs`.
 
 
 ## Training
