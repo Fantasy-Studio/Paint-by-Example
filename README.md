@@ -45,6 +45,8 @@ sh test.sh
 Visualization of inputs and output:
 
 ![](figure/result_1.png)
+![](figure/result_2.png)
+![](figure/result_3.png)
 
 ## Training
 Coming Soon.
