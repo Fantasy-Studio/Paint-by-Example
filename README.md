@@ -43,6 +43,7 @@ or simply run:
 sh test.sh
 ```
 Visualization of inputs and output:
+
 ![](figure/result_1.png)
 
 ## Training
