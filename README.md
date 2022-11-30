@@ -1,6 +1,6 @@
 # Paint by Example: Exemplar-based Image Editing with Diffusion Models
 ![Teaser](figure/teaser.png)
-### [Project page (Coming Soon)]() |   [Paper](https://arxiv.org/abs/2211.13227) 
+### [Paper](https://arxiv.org/abs/2211.13227) 
 <!-- <br> -->
 [Binxin Yang](https://orcid.org/0000-0003-4110-1986), [Shuyang Gu](http://home.ustc.edu.cn/~gsy777/), [Bo Zhang](https://bo-zhang.me/), [Ting Zhang](https://www.microsoft.com/en-us/research/people/tinzhan/), [Xuejin Chen](http://staff.ustc.edu.cn/~xjchen99/), [Xiaoyan Sun](http://staff.ustc.edu.cn/~xysun720/), [Dong Chen](https://www.microsoft.com/en-us/research/people/doch/) and [Fang Wen](https://www.microsoft.com/en-us/research/people/fangwen/).
 <!-- <br> -->
@@ -22,7 +22,7 @@ conda activate Paint-by-Example
 ```
 
 ## Pretrained Model
-We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX11bIVzsPuv7-cIsANN2BkzuX5pLm/view?usp=share_link)) that is trained on Open-Images for 40 epochs. By default, we assume that the pretrained model is downloaded and saved to the directory `checkpoints`.
+We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX11bIVzsPuv7-cIsANN2BkzuX5pLm/view?usp=share_link)) that is trained on [Open-Images](https://storage.googleapis.com/openimages/web/index.html) for 40 epochs. By default, we assume that the pretrained model is downloaded and saved to the directory `checkpoints`.
 
 ## Testing
 
