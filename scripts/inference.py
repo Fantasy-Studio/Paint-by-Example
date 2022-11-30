@@ -206,7 +206,7 @@ def main():
         "--n_samples",
         type=int,
         default=1,
-        help="how many samples to produce for each given prompt. A.k.a. batch size",
+        help="how many samples to produce for each given reference image. A.k.a. batch size",
     )
     parser.add_argument(
         "--n_rows",
@@ -219,11 +219,6 @@ def main():
         type=float,
         default=1,
         help="unconditional guidance scale: eps = eps(x, empty) + scale * (eps(x, cond) - eps(x, empty))",
-    )
-    parser.add_argument(
-        "--from-file",
-        type=str,
-        help="if specified, load prompts from this file",
     )
     parser.add_argument(
         "--config",
@@ -290,16 +285,6 @@ def main():
 
     batch_size = opt.n_samples
     n_rows = opt.n_rows if opt.n_rows > 0 else batch_size
-    if not opt.from_file:
-        prompt = opt.prompt
-        assert prompt is not None
-        data = [batch_size * [prompt]]
-
-    else:
-        print(f"reading prompts from {opt.from_file}")
-        with open(opt.from_file, "r") as f:
-            data = f.read().splitlines()
-            data = list(chunk(data, batch_size))
 
     sample_path = os.path.join(outpath, "source")
     result_path = os.path.join(outpath, "results")

@@ -5,3 +5,5 @@ checkpoints
 data
 train.sh
 latent_diffusion.egg-info
+test_random.sh
+results
