@@ -26,7 +26,7 @@ We provide the checkpoint ([Google Drive](https://drive.google.com/file/d/11HSX1
 
 ## Testing
 
-To sample from our model, run the following, you can use `scripts/inference.py`. For example, 
+To sample from our model, you can use `scripts/inference.py`. For example, 
 ```
 python scripts/inference.py \
 --plms --outdir results \
