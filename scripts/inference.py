@@ -22,13 +22,12 @@ from diffusers.pipelines.stable_diffusion.safety_checker import StableDiffusionS
 from transformers import AutoFeatureExtractor
 import clip
 from torchvision.transforms import Resize
-# load safety model
-safety_model_id = "CompVis/stable-diffusion-safety-checker"
-safety_feature_extractor = AutoFeatureExtractor.from_pretrained(safety_model_id)
-safety_checker = StableDiffusionSafetyChecker.from_pretrained(safety_model_id)
 wm = "Paint-by-Example"
 wm_encoder = WatermarkEncoder()
 wm_encoder.set_watermark('bytes', wm.encode('utf-8'))
+safety_model_id = "CompVis/stable-diffusion-safety-checker"
+safety_feature_extractor = AutoFeatureExtractor.from_pretrained(safety_model_id)
+safety_checker = StableDiffusionSafetyChecker.from_pretrained(safety_model_id)
 
 def chunk(it, size):
     it = iter(it)
@@ -129,13 +128,6 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "--prompt",
-        type=str,
-        nargs="?",
-        default="a photograph of an astronaut riding a horse",
-        help="the prompt to render"
-    )
-    parser.add_argument(
         "--outdir",
         type=str,
         nargs="?",
@@ -162,16 +154,6 @@ def main():
         "--plms",
         action='store_true',
         help="use plms sampling",
-    )
-    parser.add_argument(
-        "--random_padding",
-        action='store_true',
-        help="use plms sampling",
-    )
-    parser.add_argument(
-        "--laion400m",
-        action='store_true',
-        help="uses the LAION400M model",
     )
     parser.add_argument(
         "--fixed_code",
@@ -288,11 +270,6 @@ def main():
     )
     opt = parser.parse_args()
 
-    if opt.laion400m:
-        print("Falling back to LAION 400M model...")
-        opt.config = "configs/latent-diffusion/txt2img-1p4B-eval.yaml"
-        opt.ckpt = "models/ldm/text2img-large/model.ckpt"
-        opt.outdir = "outputs/txt2img-samples-laion400m"
 
     seed_everything(opt.seed)
 
