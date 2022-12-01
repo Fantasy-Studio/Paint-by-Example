@@ -3,7 +3,10 @@ tmp
 src
 checkpoints
 data
-train.sh
+train_my.sh
 latent_diffusion.egg-info
 test_random.sh
 results
+dataset
+pretrained_models
+models

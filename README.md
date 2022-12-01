@@ -49,11 +49,69 @@ Visualization of inputs and output:
 ![](figure/result_3.png)
 
 ## Training
-Coming Soon.
+
+### Data preparing
+- Download separate packed files of Open-Images dataset from [CVDF's site](https://github.com/cvdfoundation/open-images-dataset#download-images-with-bounding-boxes-annotations) and unzip them.
+- Download bbox annotations of Open-Images dataset from [Open-Images official site](https://storage.googleapis.com/openimages/web/download_v7.html#download-manually).
+- Generate bbox annotations of each image in txt format.
+    ```
+    python scripts/read_bbox.py
+    ```
+
+The data structure is like this:
+```
+dataset
+├── open-images
+│  ├── annotations
+│  │  ├── class-descriptions-boxable.csv
+│  │  ├── oidv6-train-annotations-bbox.csv
+│  │  ├── test-annotations-bbox.csv
+│  │  ├── validation-annotations-bbox.csv
+│  ├── images
+│  │  ├── train_0
+│  │  │  ├── xxx.jpg
+│  │  │  ├── ...
+│  │  ├── train_1
+│  │  ├── ...
+│  │  ├── validation
+│  │  ├── test
+│  ├── bbox
+│  │  ├── train_0
+│  │  │  ├── xxx.txt
+│  │  │  ├── ...
+│  │  ├── train_1
+│  │  ├── ...
+│  │  ├── validation
+│  │  ├── test
+```
+
+### Download the pretrained model of Stable Diffusion
+We utilize the pretrained Stable Diffusion v1-4 as initialization, please download the pretrained models from [Hugging Face](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original) and save the model to directory `pretrained_models`. Then run the following script to add 5 additional input channels for the UNet (4 for the encoded masked-image and 1 for the mask itself) whose weights were zero-initialized.
+```
+python scripts/modify_checkpoints.py
+```
+
+### Training Paint by Example
+To train a new model on Open-Images, you can use `main.py`. For example,
+```
+python -u main.py \
+--logdir models/Paint-by-Example \
+--pretrained_model pretrained_models/sd-v1-4-modified-9channel.ckpt \
+--base configs/v1.yaml \
+--scale_lr False
+```
+or simply run:
+```
+sh train.sh
+```
 
 ## Acknowledgements
 
 - This code borrows heavily from [Stable Diffusion](https://github.com/CompVis/stable-diffusion). We also thank the contributors of [OpenAI's ADM codebase](https://github.com/openai/guided-diffusion) and [https://github.com/lucidrains/denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch).
+
+## Maintenance
+
+Please open a GitHub issue for any help. If you have any questions regarding the technical details, feel free to contact us.
 
 ## License
 The codes and the pretrained model in this repository are under the CreativeML OpenRAIL M license as specified by the LICENSE file.
