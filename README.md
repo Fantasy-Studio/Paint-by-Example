@@ -104,6 +104,15 @@ or simply run:
 ```
 sh train.sh
 ```
+## Citing Paint by Example
+
+```
+@article{yang2022paint,
+  title={Paint by Example: Exemplar-based Image Editing with Diffusion Models},
+  author={Yang, Binxin and Gu, Shuyang and Zhang, Bo and Zhang, Ting and Chen, Xuejin and Sun, Xiaoyan and Chen, Dong and Wen, Fang},
+  journal={arXiv preprint arXiv:2211.13227},
+  year={2022}
+}
 
 ## Acknowledgements
 
