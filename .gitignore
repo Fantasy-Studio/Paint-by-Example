@@ -2,7 +2,6 @@ __pycache__
 tmp
 src
 checkpoints
-data
 train_my.sh
 latent_diffusion.egg-info
 test_random.sh
