@@ -86,7 +86,7 @@ dataset
 ```
 
 ### Download the pretrained model of Stable Diffusion
-We utilize the pretrained Stable Diffusion v1-4 as initialization, please download the pretrained models from [Hugging Face](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original) and save the model to directory `pretrained_models`. Then run the following script to add new weights for 5 additional input channels of the UNet (4 for the encoded masked-image and 1 for the mask itself).
+We utilize the pretrained Stable Diffusion v1-4 as initialization, please download the pretrained models from [Hugging Face](https://huggingface.co/CompVis/stable-diffusion-v-1-4-original) and save the model to directory `pretrained_models`. Then run the following script to add zero-initialized weights for 5 additional input channels of the UNet (4 for the encoded masked-image and 1 for the mask itself).
 ```
 python scripts/modify_checkpoints.py
 ```
