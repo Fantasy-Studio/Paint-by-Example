@@ -11,6 +11,7 @@
 ## News
 
 - *2022-11-29* Upload code.
+- *2022-12-07* Release a [Gradio](https://gradio.app/) demo on [Hugging Face](https://huggingface.co/spaces/Fantasy-Studio/Paint-by-Example) Spaces.
 
 ## Requirements
 A suitable [conda](https://conda.io/) environment named `Paint-by-Example` can be created
