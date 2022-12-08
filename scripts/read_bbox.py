@@ -9,7 +9,7 @@ dir_list.sort()
 for dir_name in dir_list:
     print(dir_name)
     if 'validation' in dir_name:
-        csv_file_path='dataset/openimages/annotations/validation-annotations-bbox.csv'
+        csv_file_path='dataset/open-images/annotations/validation-annotations-bbox.csv'
     elif 'test' in dir_name:
         csv_file_path='dataset/open-images/annotations/test-annotations-bbox.csv'
     else:
