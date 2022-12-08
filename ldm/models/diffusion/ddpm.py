@@ -6,7 +6,6 @@ https://github.com/CompVis/taming-transformers
 -- merci
 """
 
-from selectors import EpollSelector
 import torch
 import torch.nn as nn
 import numpy as np
