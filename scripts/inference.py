@@ -329,7 +329,7 @@ def main():
                 z_inpaint = model.encode_first_stage(test_model_kwargs['inpaint_image'])
                 z_inpaint = model.get_first_stage_encoding(z_inpaint).detach()
                 test_model_kwargs['inpaint_image']=z_inpaint
-                test_model_kwargs['inpaint_mask']=Resize([z_inpaint.shape[-1],z_inpaint.shape[-1]])(test_model_kwargs['inpaint_mask'])
+                test_model_kwargs['inpaint_mask']=Resize([z_inpaint.shape[-2],z_inpaint.shape[-1]])(test_model_kwargs['inpaint_mask'])
 
                 shape = [opt.C, opt.H // opt.f, opt.W // opt.f]
                 samples_ddim, _ = sampler.sample(S=opt.ddim_steps,
@@ -367,7 +367,7 @@ def main():
                         all_img.append(un_norm(image_tensor[i]).cpu())
                         all_img.append(un_norm(inpaint_image[i]).cpu())
                         ref_img=ref_tensor
-                        ref_img=Resize([512,512])(ref_img)
+                        ref_img=Resize([opt.H, opt.W])(ref_img)
                         all_img.append(un_norm_clip(ref_img[i]).cpu())
                         all_img.append(x_sample)
                         grid = torch.stack(all_img, 0)
