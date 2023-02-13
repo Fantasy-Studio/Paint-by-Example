@@ -48,7 +48,7 @@ for dir_name in dir_list:
                     f = open(file_path, 'w')
 
                 for box in boxes_new:
-                        # each row in a file is name of the class_name, XMin, YMix, XMax, YMax (left top right bottom)
+                        # each row in a file is name of the class_name, XMin, YMin, XMax, YMax (left top right bottom)
                     print(box[0], box[2], box[1], box[3], file=f)
         except Exception as e:
             pass
