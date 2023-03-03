@@ -23,7 +23,7 @@ for dir_name in dir_list:
     images_label_list = list(set(downloaded_images_list))
     df_val = pd.read_csv(csv_file_path)
     groups = df_val.groupby(df_val.ImageID)
-    for image in tqdm(images_label_list[:500]):
+    for image in tqdm(images_label_list):
         try:
             current_image_path = os.path.join(download_dir, image + '.jpg')
             dataset_image = cv2.imread(current_image_path)
