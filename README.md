@@ -10,6 +10,7 @@
 >
 ## News
 
+- *2023-03-03* Release test benchmark.
 - *2023-02-23* Non-official 3rd party apps support by [ModelScope](https://www.modelscope.cn/models/damo/cv_stable-diffusion_paint-by-example/summary) (the largest Model Community in Chinese).
 - *2022-12-07* Release a [Gradio](https://gradio.app/) demo on [Hugging Face](https://huggingface.co/spaces/Fantasy-Studio/Paint-by-Example) Spaces.
 - *2022-11-29* Upload code.
@@ -107,6 +108,10 @@ or simply run:
 ```
 sh train.sh
 ```
+
+## Test Benchmark
+We build a test benchmark for quantitative analysis. Specifically, we manually select 3500 source images from MSCOCO validation set, each image contains only one bounding box. Then we manually retrieve a reference image patch from MSCOCO training set. The reference image usually shares a similar semantic with mask region to ensure the combination is reasonable. We named it as COCO Exemplar-based image Editing benchmark, abbreviated as COCOEE. This test benchmark can be downloaded from [Google Drive](https://drive.google.com/file/d/18wO_wSFF-GPNxWmO1bt6LdjubXcttqtO/view?usp=share_link).
+
 ## Citing Paint by Example
 
 ```
@@ -128,3 +133,5 @@ Please open a GitHub issue for any help. If you have any questions regarding the
 
 ## License
 The codes and the pretrained model in this repository are under the CreativeML OpenRAIL M license as specified by the LICENSE file.
+
+The test benchmark, COCOEE, belongs to the COCO Consortium and are licensed under a Creative Commons Attribution 4.0 License.
