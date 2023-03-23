@@ -910,7 +910,6 @@ class LatentDiffusion(DDPM):
         return loss
 
     def forward(self, x, c, *args, **kwargs):
-        # self.opt.param_groups=self.params
         t = torch.randint(0, self.num_timesteps, (x.shape[0],), device=self.device).long()
         self.u_cond_prop=random.uniform(0, 1)
         if self.model.conditioning_key is not None:
@@ -1432,8 +1431,7 @@ class LatentDiffusion(DDPM):
         if self.learn_logvar:
             print('Diffusion model optimizing logvar')
             params.append(self.logvar)
-        params.append(self.
-                      _vector)
+        params.append(self.learnable_vector)
         opt = torch.optim.AdamW(params, lr=lr)
         if self.use_scheduler:
             assert 'target' in self.scheduler_config
