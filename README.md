@@ -9,7 +9,7 @@
 >Language-guided image editing has achieved great success recently. In this paper, for the first time, we investigate exemplar-guided image editing for more precise control. We achieve this goal by leveraging self-supervised training to disentangle and re-organize the source image and the exemplar. However, the naive approach will cause obvious fusing artifacts. We carefully analyze it and propose an information bottleneck and strong augmentations to avoid the trivial solution of directly copying and pasting the exemplar image. Meanwhile, to ensure the controllability of the editing process, we design an arbitrary shape mask for the exemplar image and leverage the classifier-free guidance to increase the similarity to the exemplar image. The whole framework involves a single forward of the diffusion model without any iterative optimization. We demonstrate that our method achieves an impressive performance and enables controllable editing on in-the-wild images with high fidelity.
 >
 ## News
-
+- *2023-05-13* Release code for quantitative results.
 - *2023-03-03* Release test benchmark.
 - *2023-02-23* Non-official 3rd party apps support by [ModelScope](https://www.modelscope.cn/models/damo/cv_stable-diffusion_paint-by-example/summary) (the largest Model Community in Chinese).
 - *2022-12-07* Release a [Gradio](https://gradio.app/) demo on [Hugging Face](https://huggingface.co/spaces/Fantasy-Studio/Paint-by-Example) Spaces.
@@ -111,6 +111,59 @@ sh train.sh
 
 ## Test Benchmark
 We build a test benchmark for quantitative analysis. Specifically, we manually select 3500 source images from MSCOCO validation set, each image contains only one bounding box. Then we manually retrieve a reference image patch from MSCOCO training set. The reference image usually shares a similar semantic with mask region to ensure the combination is reasonable. We named it as COCO Exemplar-based image Editing benchmark, abbreviated as COCOEE. This test benchmark can be downloaded from [Google Drive](https://drive.google.com/file/d/18wO_wSFF-GPNxWmO1bt6LdjubXcttqtO/view?usp=share_link).
+
+## Quantitative Results
+By default, we assume that the COCOEE is downloaded and saved to the directory `test_bench`. To generate the results of test bench, you can use `scripts/inference_test_bench.py`. For example, 
+```
+python scripts/inference_test_bench.py \
+--plms \
+--outdir results/test_bench \
+--config configs/v1.yaml \
+--ckpt checkpoints/model.ckpt \
+--scale 5
+```
+or simply run:
+```
+bash inference_test_bench.sh
+```
+### FID Score
+By default, we assume that the test set of COCO2017 is downloaded and saved to the directory `dataset`.
+The data structure is like this:
+```
+dataset
+├── coco
+│  ├── test2017
+│  │  ├── xxx.jpg
+│  │  ├── xxx.jpg
+│  │  ├── ...
+│  │  ├── xxx.jpg
+```
+Then convert the images into square images with 512 solution.
+  ```
+  python scripts/create_square_gt_for_fid.py
+  ```
+To calculate FID score, simply run:
+```
+python eval_tool/fid/fid_score.py --device cuda \
+test_bench/test_set_GT \
+results/test_bench/results
+```
+### QS Score
+Please download the model weights for QS score from [Google Drive](https://drive.google.com/file/d/1Ce2cSQ8UttxcEk03cjfJgaBwdhSPyuHI/view?usp=share_link) and save the model to directory `eval_tool/gmm`.
+To calculate QS score, simply run:
+```
+python eval_tool/gmm/gmm_score_coco.py results/test_bench/results \
+--gmm_path eval_tool/gmm/coco2017_gmm_k20 \
+--gpu 1
+```
+
+### CLIP Score
+To calculate CLIP score, simply run:
+```
+python eval_tool/clip_score/region_clip_score.py \
+--result_dir results/test_bench/results
+```
+
 
 ## Citing Paint by Example
 
