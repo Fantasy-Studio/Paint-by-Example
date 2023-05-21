@@ -607,6 +607,7 @@ def main():
     dataset_obj = SAValDataset2(
         path="/mnt/external/datasets/sam/",
         split="val",
+        flip_prob=0.0,
     )
 
     # split dataset into different ranks
