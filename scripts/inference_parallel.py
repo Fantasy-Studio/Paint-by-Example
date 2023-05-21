@@ -857,7 +857,7 @@ def main():
                     image_tensor = dataset_obj[idx]['edited'][None, ...]
                     ref_tensor   = dataset_obj[idx]['processed_img'][None, ...]
 
-                    image_clip_embedding = _get_instance_image_embedding(clip_encoder, ref_tensor)[0, 0, ...]
+                    image_clip_embedding = _get_instance_image_embedding(clip_encoder, ref_tensor.cuda())[0, 0, ...]
                     top_k_instances = retriever.query(image_clip_embedding, retriever.total_tensor, 50)
 
                     _count = 0
