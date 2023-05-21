@@ -27,7 +27,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --reference_path examples/reference/example_1.jpg \
     --seed 321 \
     --scale 5 \
-    --n_samples 1
+    --n_samples 1 --H 256 --W 256
 
 torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --plms --outdir results \
@@ -38,7 +38,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --reference_path examples/reference/example_2.jpg \
     --seed 5876 \
     --scale 5 \
-    --n_samples 1
+    --n_samples 1 --H 256 --W 256
 
 torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --plms --outdir results \
@@ -49,7 +49,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --reference_path examples/reference/example_3.jpg \
     --seed 5065 \
     --scale 5 \
-    --n_samples 1
+    --n_samples 1 --H 256 --W 256
 
 
 # python scripts/inference.py \
