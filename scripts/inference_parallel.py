@@ -637,6 +637,7 @@ def main():
                     ref_tensor   = dataset_obj[idx]['processed_img'][None, ...]
                     mask_tensor  = dataset_obj[idx]['mask'][None, ...]
                     filename     = dataset_obj[idx]['img_id']
+                    filename     = os.path.basename(filename)
                     # import pdb;pdb.set_trace()
                     inpaint_image = image_tensor*mask_tensor
                     test_model_kwargs={}
