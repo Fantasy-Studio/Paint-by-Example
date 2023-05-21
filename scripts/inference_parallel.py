@@ -633,11 +633,11 @@ def main():
                     # mask[mask < 0.5] = 0
                     # mask[mask >= 0.5] = 1
                     # mask_tensor = torch.from_numpy(mask)
-                    image_tensor = dataset_obj[idx]['edited'].unsqueeze(0)
-                    ref_tensor   = dataset_obj[idx]['processed_img'].unsqueeze(0)
-                    mask_tensor  = dataset_obj[idx]['mask'].unsqueeze(0)
+                    image_tensor = dataset_obj[idx]['edited'][None, ...]
+                    ref_tensor   = dataset_obj[idx]['processed_img'][None, ...]
+                    mask_tensor  = dataset_obj[idx]['mask'][None, None, ...]
                     filename     = dataset_obj[idx]['img_id']
-
+                    import pdb;pdb.set_trace()
                     inpaint_image = image_tensor*mask_tensor
                     test_model_kwargs={}
                     test_model_kwargs['inpaint_mask'] = mask_tensor.to(device)
