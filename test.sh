@@ -19,7 +19,7 @@ else
 fi
 
 torchrun --nproc_per_node=1 scripts/inference_parallel.py \
-    --plms --outdir results \
+    --plms --outdir /mnt/external/tmp/2023/05/21/paint-by-example-results \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
     --image_path examples/image/example_1.png \
@@ -30,7 +30,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --n_samples 1 --H 256 --W 256
 
 torchrun --nproc_per_node=1 scripts/inference_parallel.py \
-    --plms --outdir results \
+    --plms --outdir /mnt/external/tmp/2023/05/21/paint-by-example-results \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
     --image_path examples/image/example_2.png \
@@ -41,7 +41,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --n_samples 1 --H 256 --W 256
 
 torchrun --nproc_per_node=1 scripts/inference_parallel.py \
-    --plms --outdir results \
+    --plms --outdir /mnt/external/tmp/2023/05/21/paint-by-example-results \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
     --image_path examples/image/example_3.png \
