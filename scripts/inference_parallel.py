@@ -636,6 +636,7 @@ def main():
                     image_tensor = dataset_obj[idx]['edited'].unsqueeze(0)
                     ref_tensor   = dataset_obj[idx]['processed_img'].unsqueeze(0)
                     mask_tensor  = dataset_obj[idx]['mask'].unsqueeze(0)
+                    filename     = dataset_obj[idx]['img_id']
 
                     inpaint_image = image_tensor*mask_tensor
                     test_model_kwargs={}
@@ -699,8 +700,6 @@ def main():
                             img = put_watermark(img, wm_encoder)
                             img.save(os.path.join(grid_path, 'grid-'+filename[:-4]+'_'+str(opt.seed)+'.png'))
                             
-
-
                             x_sample = 255. * rearrange(x_sample.cpu().numpy(), 'c h w -> h w c')
                             img = Image.fromarray(x_sample.astype(np.uint8))
                             img = put_watermark(img, wm_encoder)
