@@ -1,0 +1,5 @@
+*egg-info/
+__pycache__/
+src/
+checkpoints/
+results/
