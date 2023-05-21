@@ -605,7 +605,7 @@ def main():
     precision_scope = autocast if opt.precision=="autocast" else nullcontext
 
     dataset_obj = SAValDataset2(
-        path="/mnt/shared_data/data_raw/openimage-v6/",
+        path="/mnt/external/datasets/sam/",
         split="val",
     )
 
