@@ -18,7 +18,7 @@ else
     echo "Model checkpoint already exists."
 fi
 
-torchrun --nproc_per_node=1 scripts/inference_parallel.py \
+torchrun --nproc_per_node=8 scripts/inference_parallel.py \
     --plms --outdir /mnt/external/tmp/2023/05/21/paint-by-example-results \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
@@ -29,7 +29,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --scale 5 \
     --n_samples 1 --H 256 --W 256
 
-torchrun --nproc_per_node=1 scripts/inference_parallel.py \
+torchrun --nproc_per_node=8 scripts/inference_parallel.py \
     --plms --outdir /mnt/external/tmp/2023/05/21/paint-by-example-results \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
@@ -40,7 +40,7 @@ torchrun --nproc_per_node=1 scripts/inference_parallel.py \
     --scale 5 \
     --n_samples 1 --H 256 --W 256
 
-torchrun --nproc_per_node=1 scripts/inference_parallel.py \
+torchrun --nproc_per_node=8 scripts/inference_parallel.py \
     --plms --outdir /mnt/external/tmp/2023/05/21/paint-by-example-results \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
