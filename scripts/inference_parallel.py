@@ -957,8 +957,8 @@ def main():
                                 ref_img.save(os.path.join(sample_path, filename[:-4]+'_'+str(opt.seed)+f"_ref_{_count}.png"))
 
                         _count += 1
-                    if _count >= 50:
-                        break
+                        if _count >= 50:
+                            break
 
     print(f"Your samples are ready and waiting for you here: \n{outpath} \n"
           f" \nEnjoy.")
