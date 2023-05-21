@@ -635,7 +635,7 @@ def main():
                     # mask_tensor = torch.from_numpy(mask)
                     image_tensor = dataset_obj[idx]['edited'][None, ...]
                     ref_tensor   = dataset_obj[idx]['processed_img'][None, ...]
-                    mask_tensor  = dataset_obj[idx]['mask'][None, ...]
+                    mask_tensor  = 1 - dataset_obj[idx]['mask'][None, ...]
                     filename     = dataset_obj[idx]['img_id']
                     filename     = os.path.basename(filename)
                     # import pdb;pdb.set_trace()
