@@ -1,3 +1,15 @@
+ID=15QzaTWsvZonJcXsNv-ilMRCYaQLhzR_i
+mkdir -p checkpoints
+FILENAME=checkpoints/model.ckpt
+wget --load-cookies /tmp/cookies.txt \
+    "https://docs.google.com/uc?export=download&confirm=$(wget \
+    --quiet --save-cookies /tmp/cookies.txt \
+    --keep-session-cookies \
+    --no-check-certificate \
+    "https://docs.google.com/uc?export=download&id=$ID" \
+    -O- | sed -rn "s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p")&id=$ID" \
+    -O $FILENAME && rm -rf /tmp/cookies.txt
+
 python scripts/inference.py \
 --plms --outdir results \
 --config configs/v1.yaml \
