@@ -20,12 +20,13 @@ fi
 
 # iterate over all examples, the names are like test_cases/972_input.jpg, test_cases/972_mask.png, test_cases/972_reference.jpg
 
-for i in {1..1000..1}
+for num in {1..10}  
+
 do
-    echo "Processing $i"
+    echo "Processing $num"
     # test whether the file exists
-    if [ ! -f "test_cases/${i}_input.jpg" ]; then
-        echo "test_cases/${i}_input.jpg does not exist."
+    if [ ! -f "test_cases/${num}_input.jpg" ]; then
+        echo "test_cases/${num}_input.jpg does not exist."
         continue
     fi
     mkdir -p results-512
@@ -33,9 +34,9 @@ do
         --plms --outdir results-512 \
         --config configs/v1.yaml \
         --ckpt checkpoints/model.ckpt \
-        --image_path test_cases/${i}_input.jpg \
-        --mask_path test_cases/${i}_mask.png \
-        --reference_path test_cases/${i}_reference.jpg \
+        --image_path test_cases/${num}_input.jpg \
+        --mask_path test_cases/${num}_mask.png \
+        --reference_path test_cases/${num}_reference.jpg \
         --seed 321 \
         --scale 5 \
         --n_samples 1
@@ -45,9 +46,9 @@ do
         --plms --outdir results-256 \
         --config configs/v1.yaml \
         --ckpt checkpoints/model.ckpt \
-        --image_path test_cases/${i}_input.jpg \
-        --mask_path test_cases/${i}_mask.png \
-        --reference_path test_cases/${i}_reference.jpg \
+        --image_path test_cases/${num}_input.jpg \
+        --mask_path test_cases/${num}_mask.png \
+        --reference_path test_cases/${num}_reference.jpg \
         --seed 321 \
         --scale 5 \
         --n_samples 1 \
