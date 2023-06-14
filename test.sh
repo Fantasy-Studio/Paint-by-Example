@@ -22,6 +22,7 @@ fi
 
 for i in {1..1000}
 do
+    echo "Processing $i"
     # test whether the file exists
     if [ ! -f "test_cases/${i}_input.jpg" ]; then
         echo "test_cases/${i}_input.jpg does not exist."
