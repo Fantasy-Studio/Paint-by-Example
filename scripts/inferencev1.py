@@ -306,7 +306,7 @@ def main():
             with model.ema_scope():
                 for filename in file_names:
                     # filename = os.path.basename(opt.image_path)
-                    img_p = Image.open(opt.image_path).convert("RGB")
+                    img_p = Image.open(filename).convert("RGB")
                     img_p = img_p.resize((opt.H, opt.W))
                     image_tensor = get_tensor()(img_p)
                     image_tensor = image_tensor.unsqueeze(0)
