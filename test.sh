@@ -36,7 +36,7 @@ do
         --ckpt checkpoints/model.ckpt \
         --image_path test_cases/${num}_input.jpg \
         --mask_path test_cases/${num}_mask.png \
-        --reference_path test_cases/${num}_reference.jpg \
+        --reference_path test_cases/${num}_ref.jpg \
         --seed 321 \
         --scale 5 \
         --n_samples 1
@@ -48,7 +48,7 @@ do
         --ckpt checkpoints/model.ckpt \
         --image_path test_cases/${num}_input.jpg \
         --mask_path test_cases/${num}_mask.png \
-        --reference_path test_cases/${num}_reference.jpg \
+        --reference_path test_cases/${num}_ref.jpg \
         --seed 321 \
         --scale 5 \
         --n_samples 1 \
