@@ -35,7 +35,7 @@ do
         --config configs/v1.yaml \
         --ckpt checkpoints/model.ckpt \
         --image_path test_cases/${num}_input.jpg \
-        --mask_path test_cases/${num}_mask.png \
+        --mask_path test_cases/${num}_mask.jpg \
         --reference_path test_cases/${num}_ref.jpg \
         --seed 321 \
         --scale 5 \
@@ -47,7 +47,7 @@ do
         --config configs/v1.yaml \
         --ckpt checkpoints/model.ckpt \
         --image_path test_cases/${num}_input.jpg \
-        --mask_path test_cases/${num}_mask.png \
+        --mask_path test_cases/${num}_mask.jpg \
         --reference_path test_cases/${num}_ref.jpg \
         --seed 321 \
         --scale 5 \
