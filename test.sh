@@ -29,17 +29,17 @@ python scripts/inferencev1.py \
     --scale 5 \
     --n_samples 1
 
-python scripts/inferencev1.py \
-    --plms --outdir results-512 \
-    --config configs/v1.yaml \
-    --ckpt checkpoints/model.ckpt \
-    --image_path test_cases/${num}_input.jpg \
-    --mask_path test_cases/${num}_mask.jpg \
-    --reference_path test_cases/${num}_ref.jpg \
-    --seed 321 \
-    --scale 5 \
-    --n_samples 1 \
-    --H 256 --W 256
+# python scripts/inferencev1.py \
+#     --plms --outdir results-512 \
+#     --config configs/v1.yaml \
+#     --ckpt checkpoints/model.ckpt \
+#     --image_path test_cases/${num}_input.jpg \
+#     --mask_path test_cases/${num}_mask.jpg \
+#     --reference_path test_cases/${num}_ref.jpg \
+#     --seed 321 \
+#     --scale 5 \
+#     --n_samples 1 \
+#     --H 256 --W 256
 
 
 # iterate over all examples, the names are like test_cases/972_input.jpg, test_cases/972_mask.png, test_cases/972_reference.jpg
