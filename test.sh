@@ -18,38 +18,82 @@ else
     echo "Model checkpoint already exists."
 fi
 
-torchrun --nproc_per_node=8 scripts/inference_parallel.py \
-    --plms --outdir /mnt/external/tmp/2023/05/22/paint-by-example-results \
-    --config configs/v1.yaml \
-    --ckpt checkpoints/model.ckpt \
-    --image_path examples/image/example_1.png \
-    --mask_path examples/mask/example_1.png \
-    --reference_path examples/reference/example_1.jpg \
-    --seed 321 \
-    --scale 5 \
-    --n_samples 1 --H 256 --W 256
+# iterate over all examples, the names are like test_cases/972_input.jpg, test_cases/972_mask.png, test_cases/972_reference.jpg
+for i in {1..1000}
+do
+    # test whether the file exists
+    if [ ! -f "test_cases/${i}_input.jpg" ]; then
+        echo "test_cases/${i}_input.jpg does not exist."
+        continue
+    fi
+    mkdir -p results-512
+    python scripts/inference.py \
+        --plms --outdir results-512 \
+        --config configs/v1.yaml \
+        --ckpt checkpoints/model.ckpt \
+        --image_path test_cases/${i}_input.jpg \
+        --mask_path test_cases/${i}_mask.png \
+        --reference_path test_cases/${i}_reference.jpg \
+        --seed 321 \
+        --scale 5 \
+        --n_samples 1
 
-torchrun --nproc_per_node=8 scripts/inference_parallel.py \
-    --plms --outdir /mnt/external/tmp/2023/05/22/paint-by-example-results \
-    --config configs/v1.yaml \
-    --ckpt checkpoints/model.ckpt \
-    --image_path examples/image/example_2.png \
-    --mask_path examples/mask/example_2.png \
-    --reference_path examples/reference/example_2.jpg \
-    --seed 5876 \
-    --scale 5 \
-    --n_samples 1 --H 256 --W 256
+    mkdir -p results-256
+    python scripts/inference.py \
+        --plms --outdir results-256 \
+        --config configs/v1.yaml \
+        --ckpt checkpoints/model.ckpt \
+        --image_path test_cases/${i}_input.jpg \
+        --mask_path test_cases/${i}_mask.png \
+        --reference_path test_cases/${i}_reference.jpg \
+        --seed 321 \
+        --scale 5 \
+        --n_samples 1 \
+        --H 256 --W 256
+done
 
-torchrun --nproc_per_node=8 scripts/inference_parallel.py \
-    --plms --outdir /mnt/external/tmp/2023/05/22/paint-by-example-results \
-    --config configs/v1.yaml \
-    --ckpt checkpoints/model.ckpt \
-    --image_path examples/image/example_3.png \
-    --mask_path examples/mask/example_3.png \
-    --reference_path examples/reference/example_3.jpg \
-    --seed 5065 \
-    --scale 5 \
-    --n_samples 1 --H 256 --W 256
+# python scripts/inference.py \
+#     --plms --outdir results \
+#     --config configs/v1.yaml \
+#     --ckpt checkpoints/model.ckpt \
+#     --image_path examples/image/example_1.png \
+#     --mask_path examples/mask/example_1.png \
+#     --reference_path examples/reference/example_1.jpg \
+#     --seed 321 \
+#     --scale 5
+
+# torchrun --nproc_per_node=8 scripts/inference_parallel.py \
+#     --plms --outdir /mnt/external/tmp/2023/05/22/paint-by-example-results \
+#     --config configs/v1.yaml \
+#     --ckpt checkpoints/model.ckpt \
+#     --image_path examples/image/example_1.png \
+#     --mask_path examples/mask/example_1.png \
+#     --reference_path examples/reference/example_1.jpg \
+#     --seed 321 \
+#     --scale 5 \
+#     --n_samples 1 --H 256 --W 256
+
+# torchrun --nproc_per_node=8 scripts/inference_parallel.py \
+#     --plms --outdir /mnt/external/tmp/2023/05/22/paint-by-example-results \
+#     --config configs/v1.yaml \
+#     --ckpt checkpoints/model.ckpt \
+#     --image_path examples/image/example_2.png \
+#     --mask_path examples/mask/example_2.png \
+#     --reference_path examples/reference/example_2.jpg \
+#     --seed 5876 \
+#     --scale 5 \
+#     --n_samples 1 --H 256 --W 256
+
+# torchrun --nproc_per_node=8 scripts/inference_parallel.py \
+#     --plms --outdir /mnt/external/tmp/2023/05/22/paint-by-example-results \
+#     --config configs/v1.yaml \
+#     --ckpt checkpoints/model.ckpt \
+#     --image_path examples/image/example_3.png \
+#     --mask_path examples/mask/example_3.png \
+#     --reference_path examples/reference/example_3.jpg \
+#     --seed 5065 \
+#     --scale 5 \
+#     --n_samples 1 --H 256 --W 256
 
 
 # python scripts/inference.py \
