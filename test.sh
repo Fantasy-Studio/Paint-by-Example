@@ -20,7 +20,7 @@ fi
 
 # iterate over all examples, the names are like test_cases/972_input.jpg, test_cases/972_mask.png, test_cases/972_reference.jpg
 
-for i in {1..1000}
+for i in {1..1000..1}
 do
     echo "Processing $i"
     # test whether the file exists
