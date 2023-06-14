@@ -382,14 +382,14 @@ def main():
                             grid = 255. * rearrange(grid, 'c h w -> h w c').cpu().numpy()
                             img = Image.fromarray(grid.astype(np.uint8))
                             img = put_watermark(img, wm_encoder)
-                            img.save(os.path.join(grid_path, 'grid-'+filename[:-4]+'_'+str(opt.seed)+'.png'))
+                            img.save(os.path.join(grid_path, 'grid-'+ os.path.basename(filename)[:-4] +'_'+str(opt.seed)+'.png'))
                             
 
 
                             x_sample = 255. * rearrange(x_sample.cpu().numpy(), 'c h w -> h w c')
                             img = Image.fromarray(x_sample.astype(np.uint8))
                             img = put_watermark(img, wm_encoder)
-                            img.save(os.path.join(result_path, filename[:-4]+'_'+str(opt.seed)+".png"))
+                            img.save(os.path.join(result_path, os.path.basename(filename)[:-4] +'_'+str(opt.seed)+".png"))
                             
                             mask_save=255.*rearrange(un_norm(inpaint_mask[i]).cpu(), 'c h w -> h w c').numpy()
                             mask_save= cv2.cvtColor(mask_save,cv2.COLOR_GRAY2RGB)
@@ -403,7 +403,7 @@ def main():
                             inpaint_img.save(os.path.join(sample_path, filename[:-4]+'_'+str(opt.seed)+"_inpaint.png"))
                             ref_img=255.*rearrange(all_img[2], 'c h w -> h w c').numpy()
                             ref_img = Image.fromarray(ref_img.astype(np.uint8))
-                            ref_img.save(os.path.join(sample_path, filename[:-4]+'_'+str(opt.seed)+"_ref.png"))
+                            ref_img.save(os.path.join(sample_path, os.path.basename(filename)[:-4] +'_'+str(opt.seed)+"_ref.png"))
 
     print(f"Your samples are ready and waiting for you here: \n{outpath} \n"
           f" \nEnjoy.")
