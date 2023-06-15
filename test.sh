@@ -18,7 +18,7 @@ else
     echo "Model checkpoint already exists."
 fi
 
-python scripts/inferencev1.py \
+torchrun --nproc_per_node=4 scripts/inferencev1.py \
     --plms --outdir results-512 \
     --config configs/v1.yaml \
     --ckpt checkpoints/model.ckpt \
