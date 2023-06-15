@@ -124,6 +124,41 @@ def get_tensor_clip(normalize=True, toTensor=True):
     return torchvision.transforms.Compose(transform_list)
 
 
+
+# dist utils
+def get_world_size():
+    return torch.distributed.get_world_size() if torch.distributed.is_initialized() else 1
+
+
+def get_rank():
+    return torch.distributed.get_rank() if torch.distributed.is_initialized() else 0
+
+
+def expand_first_dim(x, num_repeats=5, unsqueeze=False):
+    if unsqueeze:
+        x = x.unsqueeze(0)
+    x = x.repeat(num_repeats, *([1] * (x.dim() - 1)))
+    return x
+
+
+def dist_init():
+    if 'MASTER_ADDR' not in os.environ:
+        os.environ['MASTER_ADDR'] = 'localhost'
+    if 'MASTER_PORT' not in os.environ:
+        os.environ['MASTER_PORT'] = '29500'
+    if 'RANK' not in os.environ:
+        os.environ['RANK'] = '0'
+    if 'LOCAL_RANK' not in os.environ:
+        os.environ['LOCAL_RANK'] = '0'
+    if 'WORLD_SIZE' not in os.environ:
+        os.environ['WORLD_SIZE'] = '1'
+
+    backend = 'gloo' if os.name == 'nt' else 'nccl'
+    torch.distributed.init_process_group(backend=backend, init_method='env://')
+    torch.cuda.set_device(int(os.environ.get('LOCAL_RANK', '0')))
+
+
+
 def main():
     parser = argparse.ArgumentParser()
 
@@ -265,7 +300,7 @@ def main():
     )
     opt = parser.parse_args()
 
-
+    dist_init()
     seed_everything(opt.seed)
 
     config = OmegaConf.load(f"{opt.config}")
@@ -299,6 +334,8 @@ def main():
         start_code = torch.randn([opt.n_samples, opt.C, opt.H // opt.f, opt.W // opt.f], device=device)
 
     file_names = glob.glob(f"test_cases/*_input.jpg")
+    file_names = sorted(file_names)
+    file_names = file_names[get_rank()::get_world_size()]
 
     precision_scope = autocast if opt.precision=="autocast" else nullcontext
     with torch.no_grad():
