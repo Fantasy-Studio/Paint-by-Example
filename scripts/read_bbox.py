@@ -3,7 +3,8 @@ import cv2
 import pandas as pd
 import argparse
 from tqdm import tqdm
-os.mkdir('dataset/open-images/bbox')
+if not os.path.exists('dataset/open-images/bbox'):
+    os.mkdir('dataset/open-images/bbox')
 dir_list=os.listdir('dataset/open-images/images')
 dir_list.sort()
 for dir_name in dir_list:
